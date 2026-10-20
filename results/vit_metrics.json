@@ -1,0 +1,85 @@
+{
+  "model": "torchvision_vit_b_16",
+  "seed": 42,
+  "class_names": [
+    "glioma",
+    "meningioma",
+    "notumor",
+    "pituitary"
+  ],
+  "class_to_idx": {
+    "glioma": 0,
+    "meningioma": 1,
+    "notumor": 2,
+    "pituitary": 3
+  },
+  "weights": "ViT_B_16_Weights.DEFAULT (ImageNet pretrained)",
+  "dataset_root_relative_to_project": "data\\brain-tumor-mri-dataset",
+  "split_manifest": "results\\model_data_split.csv",
+  "split_sizes": {
+    "train": 4480,
+    "validation": 1120,
+    "official_test": 1600,
+    "test_exact_duplicate_filtered": 1600
+  },
+  "validation_selection": {
+    "checkpoint_metric": "validation macro-F1",
+    "best_epoch": 10,
+    "best_validation_macro_f1": 0.9694915566494839,
+    "head_only_epochs": 2,
+    "unfrozen_encoder_layers": 2
+  },
+  "training_config": {
+    "img_size": 224,
+    "batch_size": 16,
+    "epochs_requested": 10,
+    "epochs_completed": 10,
+    "head_learning_rate": 0.0005,
+    "backbone_learning_rate": 2e-05,
+    "weight_decay": 0.0001,
+    "early_stopping_patience": 3,
+    "device": "cuda",
+    "num_parameters": 85801732,
+    "trainable_parameters_after_finetune": 14180356,
+    "imagenet_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "imagenet_std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "best_checkpoint_path": "models\\vit_b16.pt",
+  "official_test_metrics": {
+    "loss": 0.29654334410468436,
+    "accuracy": 0.939375,
+    "balanced_accuracy": 0.9393750000000001,
+    "precision_macro": 0.9403838582191488,
+    "recall_macro": 0.9393750000000001,
+    "f1_macro": 0.9383661419757452,
+    "num_images": 1600,
+    "forward_latency_ms_per_image": 30.959198062992073,
+    "roc_auc_ovr_macro": 0.9901447916666668
+  },
+  "exact_duplicate_filtered_test_metrics": {
+    "loss": 0.29654334410468436,
+    "accuracy": 0.939375,
+    "balanced_accuracy": 0.9393750000000001,
+    "precision_macro": 0.9403838582191488,
+    "recall_macro": 0.9393750000000001,
+    "f1_macro": 0.9383661419757452,
+    "num_images": 1600,
+    "forward_latency_ms_per_image": 31.364144125327584,
+    "roc_auc_ovr_macro": 0.9901447916666668
+  },
+  "data_quality_notes": [
+    "Reused the train/validation/test manifest from notebook 02.",
+    "Checkpoint and early stopping were selected using validation macro-F1; test data did not guide training.",
+    "The exact-duplicate-filtered test subset removes test hashes present in the train + validation manifest.",
+    "Exact-hash filtering does not remove all near-duplicates or establish patient-level independence.",
+    "This is an educational experiment, not a clinically validated diagnostic model."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "dataset_root_relative_to_project": "data\\brain-tumor-mri-dataset",
+  "total_image_files": 7200,
+  "valid_images": 7200,
+  "invalid_images": 0,
+  "class_names": [
+    "glioma",
+    "meningioma",
+    "notumor",
+    "pituitary"
+  ],
+  "valid_counts_by_split_and_class": {
+    "test": {
+      "glioma": 400,
+      "meningioma": 400,
+      "notumor": 400,
+      "pituitary": 400
+    },
+    "train": {
+      "glioma": 1400,
+      "meningioma": 1400,
+      "notumor": 1400,
+      "pituitary": 1400
+    }
+  },
+  "unique_sha256_hashes": 7013,
+  "exact_duplicate_hash_groups": 153,
+  "cross_split_exact_duplicate_hash_groups": 0,
+  "exact_hash_groups_with_conflicting_labels": 0,
+  "perceptual_audit_run": false,
+  "phash_distance_threshold": null,
+  "cross_split_nonidentical_phash_candidate_pairs": null,
+  "notes": [
+    "pHash matches are candidates and must be visually reviewed.",
+    "No reliable patient identifiers are assumed to be available.",
+    "This audit does not establish patient-level independence or clinical validity."
+  ]
+}

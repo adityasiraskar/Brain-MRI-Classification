@@ -1,0 +1,75 @@
+# =========================
+# Python / virtual environments
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+ENV/
+.deepeval
+# =========================
+# Jupyter / interactive development
+# =========================
+.ipynb_checkpoints/
+.ipython/
+
+# =========================
+# Local configuration / secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Downloaded MRI dataset
+# Keep small dataset instructions/placeholders, not the image files.
+# =========================
+data/**
+!data/README.md
+!data/.gitkeep
+
+# =========================
+# Trained model checkpoints can be large.
+# Keep checkpoint files out of normal Git; use Git LFS if you explicitly
+# want to version model weights. Metrics and plots under results/ are kept.
+# =========================
+models/**/*.pt
+models/**/*.pth
+models/**/*.ckpt
+models/**/*.safetensors
+models/**/*.onnx
+models/**/*.pb
+models/**/*.h5
+models/**/*.keras
+!models/.gitkeep
+
+# =========================
+# Generated results
+# IMPORTANT: results/ is intentionally NOT ignored.
+# Commit metrics CSV/JSON, plots, confusion matrices, and small prediction
+# summaries so your experiments are visible in GitHub.
+# =========================
+
+# =========================
+# Caches / logs / temporary files
+# =========================
+.cache/
+.cache-huggingface/
+**/.cache/
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+
+# =========================
+# OS / editor files
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,75 @@
+{
+  "model": "CustomBrainMRICNN",
+  "seed": 42,
+  "class_names": [
+    "glioma",
+    "meningioma",
+    "notumor",
+    "pituitary"
+  ],
+  "class_to_idx": {
+    "glioma": 0,
+    "meningioma": 1,
+    "notumor": 2,
+    "pituitary": 3
+  },
+  "dataset_root_relative_to_project": "data\\brain-tumor-mri-dataset",
+  "split_sizes": {
+    "train": 4480,
+    "validation": 1120,
+    "official_test": 1600,
+    "test_exact_duplicate_filtered": 1600
+  },
+  "validation_split": {
+    "method": "StratifiedGroupKFold",
+    "selected_fold": 1,
+    "validation_fraction": 0.2,
+    "group_key": "sha256",
+    "checkpoint_selection_metric": "validation macro-F1"
+  },
+  "training_config": {
+    "img_size": 224,
+    "batch_size": 32,
+    "epochs_requested": 15,
+    "epochs_completed": 15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "early_stopping_patience": 4,
+    "device": "cuda",
+    "num_parameters": 1206628
+  },
+  "best_checkpoint": {
+    "path": "models\\custom_cnn.pt",
+    "best_epoch": 13,
+    "best_validation_macro_f1": 0.94947269127272
+  },
+  "official_test_metrics": {
+    "loss": 0.6713084058905952,
+    "accuracy": 0.88,
+    "balanced_accuracy": 0.88,
+    "precision_macro": 0.8949805725192143,
+    "recall_macro": 0.88,
+    "f1_macro": 0.8797952762651384,
+    "num_images": 1600,
+    "forward_latency_ms_per_image": 3.0179996248625685,
+    "roc_auc_ovr_macro": 0.9635330729166667
+  },
+  "exact_duplicate_filtered_test_metrics": {
+    "loss": 0.6713084058905952,
+    "accuracy": 0.88,
+    "balanced_accuracy": 0.88,
+    "precision_macro": 0.8949805725192143,
+    "recall_macro": 0.88,
+    "f1_macro": 0.8797952762651384,
+    "num_images": 1600,
+    "forward_latency_ms_per_image": 3.1459978751081508,
+    "roc_auc_ovr_macro": 0.9635330729166667
+  },
+  "data_quality_notes": [
+    "Exact-hash groups with conflicting labels were excluded.",
+    "Validation splitting keeps exact SHA-256 groups together.",
+    "Filtered test removes exact hashes present in original training; it does not remove all near-duplicates.",
+    "No reliable patient identifiers are assumed to be available.",
+    "This is an educational benchmark, not a clinically validated diagnostic model."
+  ]
+}

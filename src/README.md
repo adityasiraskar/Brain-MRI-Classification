@@ -1,0 +1,1 @@
+Reusable project code will go here as modeling begins (dataset loaders, training loops, evaluation utilities and explainability helpers). The first EDA notebook is intentionally self-contained so it can be run and inspected before refactoring stable functions into this folder.
