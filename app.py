@@ -208,7 +208,11 @@ def _generate_gradcam(model, architecture: str, input_tensor: torch.Tensor,
 
         # Apply a visible heat map and blend it over the original image.
         import matplotlib.cm as cm
-        colored = (cm.get_cmap("jet")(cam)[..., :3] * 255).astype(np.uint8)
+        import matplotlib as mpl
+        cmap = mpl.colormaps["jet"](cam)
+        # e.g., cmap = plt.cm.get_cmap('jet')
+        # cmap = plt.cm.get_cmap('jet')(cam)
+        colored = (cmap[..., :3] * 255).astype(np.uint8)
         heatmap_image = Image.fromarray(colored, mode="RGB")
         base = original_image.convert("RGB")
         return Image.blend(base, heatmap_image, alpha=0.38)
